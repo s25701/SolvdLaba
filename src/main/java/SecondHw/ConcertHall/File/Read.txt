@@ -1,0 +1,10 @@
+Arzu Kilic 21
+Beyza Sonmez 20
+Hanks Kor 35
+Alex Egg 36
+Lara Fabian 50
+Maslo Laz 39
+The number of people that will take part:
+6
+Average age is:
+33
