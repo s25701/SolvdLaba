@@ -4,7 +4,6 @@ import java.util.*;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.stream.Collectors;
-import SecondHw.ConcertHall.Exception.NoDataException;
 import org.apache.commons.io.FileUtils;
 import SecondHw.ConcertHall.Concert.Person;
 import org.junit.Assert;
