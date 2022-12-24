@@ -7,6 +7,12 @@ public enum TicketClass {
     ECONOMY(30);
 
     private final int price;
-    TicketClass(int price){this.price = price;}
-    public int getPrice(){return price;}
+
+    TicketClass(int price) {
+        this.price = price;
+    }
+
+    public int getPrice() {
+        return price;
+    }
 }

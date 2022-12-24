@@ -1,12 +1,20 @@
 package SecondHw.ConcertHall.Concert;
 
+import java.util.List;
+
 public class ConcertHall {
     private static String concertHallId;
     private Address address;
+    private List<ConcertSection> concertSection;
 
-    public ConcertHall(String concertHallId, Address address) {
+    public ConcertHall(String concertHallId, Address address, List<ConcertSection> concertSection) {
         this.setConcertHallId(concertHallId);
         this.setAddress(address);
+        this.setConcertSection(concertSection);
+    }
+
+    public String getConcertHallId() {
+        return concertHallId;
     }
 
     public void setConcertHallId(String concertHallId) {
@@ -17,21 +25,24 @@ public class ConcertHall {
         }
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
+    public List<ConcertSection> getConcertSection() {
+        return concertSection;
     }
 
-
-    public String getConcertHallId() {
-        return concertHallId;
+    public void setConcertSection(List<ConcertSection> concertSection) {
+        this.concertSection = concertSection;
     }
 
     public Address getAddress() {
         return address;
     }
 
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
     @Override
     public String toString() {
-        return this.getConcertHallId() + "," + this.getAddress();
+        return this.getConcertHallId() + "," + this.getAddress() + "," + this.getConcertSection();
     }
 }

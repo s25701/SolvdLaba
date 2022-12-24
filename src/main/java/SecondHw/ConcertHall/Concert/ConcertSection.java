@@ -9,12 +9,12 @@ public class ConcertSection {
         this.ticketClass = ticketClass;
     }
 
-    public void setTicketClass(TicketClass ticketClass) {
-        this.ticketClass = ticketClass;
-    }
-
     public TicketClass getTicketClass() {
         return ticketClass;
+    }
+
+    public void setTicketClass(TicketClass ticketClass) {
+        this.ticketClass = ticketClass;
     }
 
     @Override

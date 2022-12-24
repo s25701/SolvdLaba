@@ -1,21 +1,54 @@
 package SecondHw.ConcertHall.Ticket;
 
-final public class Ticket{
+final public class Ticket {
+    private static boolean status;
+    private static TicketClass ticketClass;
     private String ticketId;
-    private boolean status;
-    private TicketClass ticketClass;
+
+    public Ticket() {
+    }
 
     public Ticket(String ticketId, boolean status, TicketClass ticketClass) {
         this.ticketId = ticketId;
-        this.status = status;
-        this.ticketClass=ticketClass;
-    }
-    public void setTicketClass(TicketClass ticketClass) {
-        this.ticketClass = ticketClass;
+        Ticket.status = status;
+        Ticket.ticketClass = ticketClass;
     }
 
-    public TicketClass getTicketClass() {
+    public static TicketClass getTicketClass() {
         return ticketClass;
+    }
+
+    public void setTicketClass(TicketClass ticketClass) {
+        Ticket.ticketClass = ticketClass;
+    }
+
+    public static boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        Ticket.status = status;
+    }
+
+    public static void printTicketPrice() {
+        switch (ticketClass) {
+            case FIRST:
+                System.out.println(700);
+                break;
+            case BUSINESS:
+                System.out.println(500);
+                break;
+            case ECONOMY:
+                System.out.println(30);
+                break;
+            default:
+                System.out.println("This ticket type is not defined");
+                break;
+        }
+    }
+
+    public String getTicketId() {
+        return ticketId;
     }
 
     public void setTicketId(String ticketId) {
@@ -26,37 +59,8 @@ final public class Ticket{
         }
     }
 
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
-
-    public String getTicketId() {
-        return ticketId;
-    }
-
-    public boolean isStatus() {
-        return status;
-    }
-
-    public void ticketPrice(){
-            switch (ticketClass) {
-                case FIRST:
-                    System.out.println(700);
-                    break;
-                case BUSINESS:
-                    System.out.println(500);
-                    break;
-                case ECONOMY:
-                    System.out.println(30);
-                    break;
-                default:
-                    System.out.println("This ticket type is not defined");
-                    break;
-            }
-    }
-
     @Override
     public String toString() {
-        return this.getTicketId() + "\t" + this.isStatus();
+        return this.getTicketId() + "\t" + isStatus();
     }
 }
