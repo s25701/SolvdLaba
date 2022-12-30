@@ -50,14 +50,14 @@ public class Main {
         MusicInstrument musicInstrument4 = new MusicInstrument(instrument1, "electrical");
         Instrument instrument5 = new Instrument("guitar");
         MusicInstrument musicInstrument5 = new MusicInstrument(instrument1, "acoustic");
-        Company company1 = new Company("FF", "Japonska LTD");
-        Company company2 = new Company("AA", "PKO Bank");
-        Company company3 = new Company("BB", "Ziaja LTD");
-        Company company4 = new Company("CC", "Bank Milennium");
-        Company company5 = new Company("DD", "Carrefour");
-        Ticket ticket1 = new Ticket("C09", false, FIRST);
-        Ticket ticket2 = new Ticket("C10", true, BUSINESS);
-        Ticket ticket3 = new Ticket("C11", true, ECONOMY);
+        Company company1 = new Company("Japonska LTD");
+        Company company2 = new Company("PKO Bank");
+        Company company3 = new Company("Ziaja LTD");
+        Company company4 = new Company("Bank Milennium");
+        Company company5 = new Company("Carrefour");
+        Ticket ticket1 = new Ticket(false, FIRST);
+        Ticket ticket2 = new Ticket(true, BUSINESS);
+        Ticket ticket3 = new Ticket(true, ECONOMY);
         Address address1 = new Address("wojciecha gersona", "Warsaw", "Poland");
         ConcertSection concertSection1 = new ConcertSection(BUSINESS);
         ConcertSection concertSection2 = new ConcertSection(FIRST);
@@ -91,7 +91,7 @@ public class Main {
         tickets.add(ticket1);
         tickets.add(ticket2);
 
-        ConcertHall concertHall1 = new ConcertHall("LLL", address1, concertSections1);
+        ConcertHall concertHall1 = new ConcertHall(address1, concertSections1);
         Band band1 = new Band("Turkai", band1Person, "Turkey", musicInstruments1);
         Band band2 = new Band("Ezhel", band2Person, "Turkey", musicInstruments2);
         Band band3 = new Band("Ufo53", band3Person, "Turkey", musicInstruments3);
@@ -101,8 +101,8 @@ public class Main {
         bands2.add(band2);
         bands2.add(band3);
 
-        Concert concert1 = new Concert("FF 12", LocalDate.of(2002, 8, 1), "FF", bands1, companies1);
-        Concert concert2 = new Concert("AA 22", LocalDate.of(2032, 8, 1), "BB", bands2, companies2);
+        Concert concert1 = new Concert(LocalDate.of(2002, 8, 1), bands1, companies1, concertHall1);
+        Concert concert2 = new Concert(LocalDate.of(2032, 8, 1), bands2, companies2, concertHall1);
 
 
         System.out.printf("SELECT WHAT YOU ARE\n" + "1 for customer\n" + "2 for organizator\n" + "3 for company\n");
@@ -177,11 +177,10 @@ public class Main {
             } else if (oAction == 3) {
                 try {
                     Concert concert3 = new Concert();
-                    concert3.setConcertNumber("DD", "22");
                     concert3.setConcertDate(LocalDate.of(2022, 12, 25));
-                    concert3.setConcertHallId(concertHall1.getConcertHallId());
                     concert3.setBands(bands2);
                     concert3.setCompanies(companies1);
+                    concert3.setConcertHall(concertHall1);
                     if (concert3.equals(concert1) == false || concert3.hashCode() != concert2.hashCode()) {
                         System.out.println(concert3);
                         System.out.println("New concert is created, have fun :)");
@@ -202,7 +201,7 @@ public class Main {
                 Scanner sSponsorship = new Scanner(System.in);
                 int sponsorship = sSponsorship.nextInt();
                 if (sponsorship == 1) {
-                    Company company = new Company();
+                    Company company = new Company("Ato");
                     companies1.add(company);
                     System.out.println(company + " " + "Started to sponsor concert 1");
                 } else if (sponsorship == 2) {
@@ -216,13 +215,12 @@ public class Main {
 
             } else if (cAction == 2) {
                 Company company = new Company();
-                company.setCompanyId("MM");
                 company.setCompanyName("InPol");
                 System.out.println("New company created:\n" + company);
                 System.out.println(company.manyThanks());
                 Company.companyIsSponsoring(company);
                 System.out.println("Company information:\n");
-                Company.staticDisplayCompanyInformation();
+                System.out.println(company);
             } else {
                 System.out.println("INVALID NUMBER!! SELECT A VALID NUMBER!!!");
             }

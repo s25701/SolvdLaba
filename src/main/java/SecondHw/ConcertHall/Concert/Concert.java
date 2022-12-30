@@ -10,24 +10,25 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import static java.lang.String.valueOf;
+
 public class Concert implements IConcertStartStop {
     private static final Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
-    private static String concertHallId;
-    private String concertNumber;
+    private static int nextConcertNumber = 1;
+    private final int concertNumber;
+    private ConcertHall concertHall;
     private LocalDate concertDate;
     private List<Company> company;
     private List<Band> band;
 
     public Concert() {
-
+        concertNumber = nextConcertNumber++;
     }
 
-    public Concert(String concertNumber, LocalDate concertDate, String concertHallId, List<Band> band, List<Company> company) {
-        String companyID = concertNumber.substring(0, 2);
-        String number = concertNumber.substring(2);
-        this.setConcertNumber(companyID, number);
+    public Concert(LocalDate concertDate, List<Band> band, List<Company> company, ConcertHall concertHall) {
+        this.concertHall = concertHall;
+        concertNumber = nextConcertNumber++;
         this.concertDate = concertDate;
-        Concert.concertHallId = concertHallId.toUpperCase();
         this.band = band;
         this.company = company;
     }
@@ -36,20 +37,11 @@ public class Concert implements IConcertStartStop {
         LOGGER.log(Level.INFO, "Welcome to Concert organization console!");
     }
 
-    public void setConcertNumber(String str, String number) {
-
-        if (str.matches("[a-zA-Z]+$") && str.length() == 2 && number.matches("[0-9 ]+$")) {
-            this.concertNumber = str + number;
-        } else {
-            System.out.println("Invalid Concert Number");
-        }
-    }
-
     public List<Band> getBands() {
         return band;
     }
 
-    public void setBands(List<Band> person) {
+    public void setBands(List<Band> band) {
         this.band = band;
     }
 
@@ -57,12 +49,16 @@ public class Concert implements IConcertStartStop {
         return company;
     }
 
-    public void setCompanies(List<Company> person) {
+    public void setCompanies(List<Company> company) {
         this.company = company;
     }
 
+    public void setConcertHall(ConcertHall concertHall) {
+        this.concertHall = concertHall;
+    }
+
     public String getConcertNumber() {
-        return concertNumber;
+        return "Concert" + concertNumber;
     }
 
     public LocalDate getConcertDate() throws ConcertDateException {
@@ -73,22 +69,9 @@ public class Concert implements IConcertStartStop {
         this.concertDate = concertDate;
     }
 
-    public String getConcertHallId() {
-        return concertHallId;
-    }
-
-    public void setConcertHallId(String concertHallId) {
-
-        if (concertHallId.matches("[a-zA-Z]+$") && concertHallId.length() == 3) {
-            Concert.concertHallId = concertHallId.toUpperCase();
-        } else {
-            System.out.println("Invalid SecondHw.ConcertHall ID");
-        }
-    }
-
     @Override
     public String toString() {
-        return "Concert number:" + concertNumber + "\n" + "Concert date:" + concertDate + "\n" + "ConcertHallId:" + concertHallId + "\n " + "Band name:" + " " + band + "\n " + "Company sponsored:" + company;
+        return "Concert number:" + concertNumber + "\n" + "Concert date:" + concertDate + "\n" + "ConcertHallId:" + concertHall.getConcertHallId() + "\n " + "Bands name:" + " " + band + "\n " + "Companies sponsored:" + company;
     }
 
     @Override
@@ -100,7 +83,7 @@ public class Concert implements IConcertStartStop {
 
     @Override
     public int hashCode() {
-        int result = concertNumber != null ? concertNumber.hashCode() : 0;
+        int result = concertNumber != 0 ? valueOf(concertNumber).hashCode() : 0;
 
         return result;
     }

@@ -3,26 +3,23 @@ package SecondHw.ConcertHall.Concert;
 import java.util.List;
 
 public class ConcertHall {
-    private static String concertHallId;
+    private static int nextConcertHallId = 0;
+    private final int concertHallId;
     private Address address;
     private List<ConcertSection> concertSection;
 
-    public ConcertHall(String concertHallId, Address address, List<ConcertSection> concertSection) {
-        this.setConcertHallId(concertHallId);
+    public ConcertHall() {
+        concertHallId = nextConcertHallId++;
+    }
+
+    public ConcertHall(Address address, List<ConcertSection> concertSection) {
+        concertHallId = nextConcertHallId++;
         this.setAddress(address);
         this.setConcertSection(concertSection);
     }
 
     public String getConcertHallId() {
-        return concertHallId;
-    }
-
-    public void setConcertHallId(String concertHallId) {
-        if (concertHallId.matches("[a-zA-Z]+$") && concertHallId.length() == 3) {
-            ConcertHall.concertHallId = concertHallId.toUpperCase();
-        } else {
-            System.out.println("Invalid SecondHw.ConcertHall ID");
-        }
+        return "CH" + concertHallId;
     }
 
     public List<ConcertSection> getConcertSection() {

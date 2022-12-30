@@ -1,15 +1,17 @@
 package SecondHw.ConcertHall.Ticket;
 
 final public class Ticket {
+    private static int nextTicketId = 0;
     private static boolean status;
     private static TicketClass ticketClass;
-    private String ticketId;
+    private final int ticketId;
 
     public Ticket() {
+        ticketId = nextTicketId++;
     }
 
-    public Ticket(String ticketId, boolean status, TicketClass ticketClass) {
-        this.ticketId = ticketId;
+    public Ticket(boolean status, TicketClass ticketClass) {
+        ticketId = nextTicketId++;
         Ticket.status = status;
         Ticket.ticketClass = ticketClass;
     }
@@ -48,15 +50,7 @@ final public class Ticket {
     }
 
     public String getTicketId() {
-        return ticketId;
-    }
-
-    public void setTicketId(String ticketId) {
-        if (ticketId.matches("[a-zA-Z0-9]+$") && ticketId.length() == 3) {
-            this.ticketId = ticketId.toUpperCase();
-        } else {
-            System.out.println("Invalid Ticket ID");
-        }
+        return "T" + ticketId;
     }
 
     @Override

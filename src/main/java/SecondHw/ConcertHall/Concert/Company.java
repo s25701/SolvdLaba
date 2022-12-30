@@ -3,14 +3,16 @@ package SecondHw.ConcertHall.Concert;
 import SecondHw.ConcertHall.Exception.InvalidCompanyException;
 
 public class Company extends ManyThanks {
-    private static String companyId;
-    private static String companyName;
+    private static int nextCompanyId = 0;
+    private final int companyId;
+    private String companyName;
 
     public Company() {
+        companyId = nextCompanyId++;
     }
 
-    public Company(String companyId, String companyName) {
-        this.setCompanyId(companyId);
+    public Company(String companyName) {
+        companyId = nextCompanyId++;
         this.setCompanyName(companyName);
     }
 
@@ -23,27 +25,11 @@ public class Company extends ManyThanks {
 
     public static void thereIsCompany() throws InvalidCompanyException {
         try {
-            if (companyId != null)
+            Company company = new Company();
+            if (company.getCompanyId() != null)
                 System.out.println("There are sponsor companies");
         } catch (Throwable e) {
             throw new InvalidCompanyException("There are no sponsor companies the concert can't take place", e);
-        }
-    }
-
-    public static void staticDisplayCompanyInformation() {
-        System.out.println(companyId + " " + companyName);
-    }
-
-    public String getCompanyId() {
-        return companyId; //returns companyID in capitals
-    }
-
-    public void setCompanyId(String companyId) {
-
-        if (companyId.matches("[a-zA-Z]+$") && companyId.length() == 2) {
-            Company.companyId = companyId.toUpperCase();
-        } else {
-            System.out.println("Invalid Company ID");
         }
     }
 
@@ -52,17 +38,16 @@ public class Company extends ManyThanks {
     }
 
     public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
 
-        if (companyName.matches("[a-zA-Z ]+$")) {
-            Company.companyName = companyName;
-        } else {
-            System.out.println("Invalid Company Name");
-        }
+    public String getCompanyId() {
+        return "C" + companyId;
     }
 
     @Override
     public String toString() {
-        return this.getCompanyId() + "," + this.getCompanyName();
+        return this.getCompanyId() + "," + companyName;
     }
 
     @Override
