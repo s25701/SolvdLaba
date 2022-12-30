@@ -12,15 +12,10 @@ import java.util.stream.Collectors;
 
 import static java.lang.String.valueOf;
 
-public class PersonTest extends Exception {
-
-    PersonTest(String str) {
-        super(str);
-    }
+public class PersonTest{
 
     public static void main(String[] args) throws IOException {
 
-        try {
             Person person1 = new Person("Arzu Kilic", "903847574894", 21);
             Person person2 = new Person("Beyza Sonmez", "90384757489", 20);
             Person person3 = new Person("Hanks Kor", "903847574891", 35);
@@ -36,7 +31,7 @@ public class PersonTest extends Exception {
             persons.add(person6);
             List<Person> people = persons.stream().collect(Collectors.toList());
             String string = people.toString();
-            File myfile = new File("$/SolvdLaba/src/main/java/SecondHw/ConcertHall/File/Write.txt");
+            File myfile = new File("src/main/java/SecondHw/ConcertHall/Files/Write.txt");
 
             FileUtils.writeStringToFile(myfile, string,
                     StandardCharsets.UTF_8.name());
@@ -49,7 +44,7 @@ public class PersonTest extends Exception {
             lines.add(person5.toString());
             lines.add(person6.toString());
 
-            File myfile2 = new File("$/SolvdLaba/src/main/java/SecondHw/ConcertHall/File/Write2.txt");
+            File myfile2 = new File("src/main/java/SecondHw/ConcertHall/Files/Write2.txt");
 
             FileUtils.writeLines(myfile2,
                     StandardCharsets.UTF_8.name(), lines);
@@ -57,7 +52,7 @@ public class PersonTest extends Exception {
             //read from file
             int peopleAge = persons.stream().mapToInt(x -> x.getAge()).sum();
             int avgAge = (peopleAge / lines.size());
-            File myfile3 = new File("$/SolvdLaba/src/main/java/SecondHw/ConcertHall/File/Read.txt");
+            File myfile3 = new File("src/main/java/SecondHw/ConcertHall/Files/Read.txt");
 
             String contents = FileUtils.readFileToString(myfile2,
                     StandardCharsets.UTF_8.name());
@@ -73,19 +68,10 @@ public class PersonTest extends Exception {
 
             FileUtils.writeLines(myfile3,
                     StandardCharsets.UTF_8.name(), liness);
-
-            if (lines.size() == 0) {
-                PersonTest exception =
-                        new PersonTest("The file size cant be 0");
-                throw exception;
-            }
-        } catch (IOException | PersonTest e) {
-            System.out.println(e + "There was a problem while reading/writing the file");
-        }
     }
 
     @Test
-    public void testing() throws Throwable {
+    public void testing() throws IOException {
         Person person1 = new Person("Arzu Kilic", "903847574894", 21);
         Person person2 = new Person("Beyza Sonmez", "90384757489", 20);
         Person person3 = new Person("Hanks Kor", "903847574891", 35);
@@ -99,7 +85,7 @@ public class PersonTest extends Exception {
         lines.add(person4.toString());
         lines.add(person5.toString());
         lines.add(person6.toString());
-        File myfile2 = new File("$/SolvdLaba/src/main/java/SecondHw/ConcertHall/File/Write2.txt");
+        File myfile2 = new File("src/main/java/SecondHw/ConcertHall/Files/Write2.txt");
 
         FileUtils.writeLines(myfile2,
                 StandardCharsets.UTF_8.name(), lines);
