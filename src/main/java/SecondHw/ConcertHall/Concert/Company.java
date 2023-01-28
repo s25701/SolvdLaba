@@ -23,16 +23,6 @@ public class Company extends ManyThanks {
         return "There is a sponsor";
     }
 
-    public static void thereIsCompany() throws InvalidCompanyException {
-        try {
-            Company company = new Company();
-            if (company.getCompanyId() != null)
-                System.out.println("There are sponsor companies");
-        } catch (Throwable e) {
-            throw new InvalidCompanyException("There are no sponsor companies the concert can't take place", e);
-        }
-    }
-
     public String getCompanyName() {
         return companyName;
     }

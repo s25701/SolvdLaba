@@ -21,9 +21,9 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
         Concert.welcomeLog();
-        List<Person> band1Person = new ArrayList<>();
-        List<Person> band2Person = new ArrayList<>();
-        List<Person> band3Person = new ArrayList<>();
+        List<Person> band1People = new ArrayList<>();
+        List<Person> band2People = new ArrayList<>();
+        List<Person> band3People = new ArrayList<>();
         List<MusicInstrument> musicInstruments1 = new ArrayList<>();
         List<MusicInstrument> musicInstruments2 = new ArrayList<>();
         List<MusicInstrument> musicInstruments3 = new ArrayList<>();
@@ -40,16 +40,11 @@ public class Main {
         Person person4 = new Person("Alex Egg", "903847574895", 36);
         Person person5 = new Person("Lara Fabian", "903847574896", 50);
         Person person6 = new Person("Maslo Laz", "903847574897", 39);
-        Instrument instrument1 = new Instrument("guitar");
-        MusicInstrument musicInstrument1 = new MusicInstrument(instrument1, "classical");
-        Instrument instrument2 = new Instrument("piano");
-        MusicInstrument musicInstrument2 = new MusicInstrument(instrument2, "classical");
-        Instrument instrument3 = new Instrument("violin");
-        MusicInstrument musicInstrument3 = new MusicInstrument(instrument1, "classical");
-        Instrument instrument4 = new Instrument("guitar");
-        MusicInstrument musicInstrument4 = new MusicInstrument(instrument1, "electrical");
-        Instrument instrument5 = new Instrument("guitar");
-        MusicInstrument musicInstrument5 = new MusicInstrument(instrument1, "acoustic");
+        MusicInstrument musicInstrument1 = new MusicInstrument(SecondHw.ConcertHall.Band.Instrument.VIOLIN, "classical");
+        MusicInstrument musicInstrument2 = new MusicInstrument(SecondHw.ConcertHall.Band.Instrument.PIANO, "classical");
+        MusicInstrument musicInstrument3 = new MusicInstrument(SecondHw.ConcertHall.Band.Instrument.GUITAR, "classical");
+        MusicInstrument musicInstrument4 = new MusicInstrument(SecondHw.ConcertHall.Band.Instrument.VIOLIN, "electrical");
+        MusicInstrument musicInstrument5 = new MusicInstrument(SecondHw.ConcertHall.Band.Instrument.VIOLIN, "acoustic");
         Company company1 = new Company("Japonska LTD");
         Company company2 = new Company("PKO Bank");
         Company company3 = new Company("Ziaja LTD");
@@ -63,16 +58,16 @@ public class Main {
         ConcertSection concertSection2 = new ConcertSection(FIRST);
         ConcertSection concertSection3 = new ConcertSection(ECONOMY);
 
-        band1Person.add(person1);
-        band1Person.add(person2);
-        band1Person.add(person3);
-        band1Person.add(person5);
-        band2Person.add(person3);
-        band2Person.add(person2);
-        band2Person.add(person4);
-        band2Person.add(person6);
-        band3Person.add(person2);
-        band3Person.add(person3);
+        band1People.add(person1);
+        band1People.add(person2);
+        band1People.add(person3);
+        band1People.add(person5);
+        band2People.add(person3);
+        band2People.add(person2);
+        band2People.add(person4);
+        band2People.add(person6);
+        band3People.add(person2);
+        band3People.add(person3);
         companies1.add(company1);
         companies1.add(company2);
         companies1.add(company3);
@@ -92,9 +87,9 @@ public class Main {
         tickets.add(ticket2);
 
         ConcertHall concertHall1 = new ConcertHall(address1, concertSections1);
-        Band band1 = new Band("Turkai", band1Person, "Turkey", musicInstruments1);
-        Band band2 = new Band("Ezhel", band2Person, "Turkey", musicInstruments2);
-        Band band3 = new Band("Ufo53", band3Person, "Turkey", musicInstruments3);
+        Band band1 = new Band("Turkai", band1People, "Turkey", musicInstruments1);
+        Band band2 = new Band("Ezhel", band2People, "Turkey", musicInstruments2);
+        Band band3 = new Band("Ufo53", band3People, "Turkey", musicInstruments3);
 
         bands1.add(band1);
         bands1.add(band2);
@@ -126,7 +121,7 @@ public class Main {
                 person6.personInfo();
 
                 System.out.println(person.manyThanks());
-                Company.thereIsCompany();
+
             } else if (action == 2) {
                 System.out.println("CHOOSE TICKET TYPE\n1 for Business\n2 for Economy\n3 for First");
                 Scanner sTicketBuy = new Scanner(System.in);

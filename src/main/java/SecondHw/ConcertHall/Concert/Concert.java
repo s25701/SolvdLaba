@@ -77,8 +77,7 @@ public class Concert implements IConcertStartStop {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (this != o) return false;
-        return o != null;
+        else return false;
     }
 
     @Override

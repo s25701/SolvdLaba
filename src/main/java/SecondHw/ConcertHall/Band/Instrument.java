@@ -1,23 +1,9 @@
 package SecondHw.ConcertHall.Band;
 
-public class Instrument {
-    private String name;
+public enum  Instrument {
 
-    public Instrument(String name) {
-        this.name = name;
-    }
-
-    public String getInstrument() {
-        return name;
-    }
-
-    public void setInstrument(String name) {
-        this.name = name;
-    }
-
-    @Override
-    public String toString() {
-        return name;
-    }
+    VIOLIN(),
+    GUITAR(),
+    PIANO();
 
 }
