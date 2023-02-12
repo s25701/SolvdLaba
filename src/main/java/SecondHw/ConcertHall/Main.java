@@ -1,9 +1,6 @@
 package SecondHw.ConcertHall;
 
-import SecondHw.ConcertHall.Band.Band;
-import SecondHw.ConcertHall.Band.Instrument;
-import SecondHw.ConcertHall.Band.MusicInstrument;
-import SecondHw.ConcertHall.Band.Person;
+import SecondHw.ConcertHall.Band.*;
 import SecondHw.ConcertHall.Concert.*;
 import SecondHw.ConcertHall.Exception.ConcertDateException;
 import SecondHw.ConcertHall.Exception.TheConcertIsPostponedException;
@@ -14,6 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import static SecondHw.ConcertHall.Band.Instrument.*;
+import static SecondHw.ConcertHall.Band.InstrumentType.*;
 import static SecondHw.ConcertHall.Ticket.TicketClass.*;
 import static java.util.stream.Collectors.toList;
 
@@ -40,11 +39,11 @@ public class Main {
         Person person4 = new Person("Alex Egg", "903847574895", 36);
         Person person5 = new Person("Lara Fabian", "903847574896", 50);
         Person person6 = new Person("Maslo Laz", "903847574897", 39);
-        MusicInstrument musicInstrument1 = new MusicInstrument(SecondHw.ConcertHall.Band.Instrument.VIOLIN, "classical");
-        MusicInstrument musicInstrument2 = new MusicInstrument(SecondHw.ConcertHall.Band.Instrument.PIANO, "classical");
-        MusicInstrument musicInstrument3 = new MusicInstrument(SecondHw.ConcertHall.Band.Instrument.GUITAR, "classical");
-        MusicInstrument musicInstrument4 = new MusicInstrument(SecondHw.ConcertHall.Band.Instrument.VIOLIN, "electrical");
-        MusicInstrument musicInstrument5 = new MusicInstrument(SecondHw.ConcertHall.Band.Instrument.VIOLIN, "acoustic");
+        MusicInstrument musicInstrument1 = new MusicInstrument(VIOLIN, CLASSICAL);
+        MusicInstrument musicInstrument2 = new MusicInstrument(PIANO, CLASSICAL);
+        MusicInstrument musicInstrument3 = new MusicInstrument(GUITAR, CLASSICAL);
+        MusicInstrument musicInstrument4 = new MusicInstrument(VIOLIN, ELECTRICAL);
+        MusicInstrument musicInstrument5 = new MusicInstrument(VIOLIN, ACOUSTIC);
         Company company1 = new Company("Japonska LTD");
         Company company2 = new Company("PKO Bank");
         Company company3 = new Company("Ziaja LTD");

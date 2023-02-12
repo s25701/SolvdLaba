@@ -1,24 +1,44 @@
 package SecondHw.ConcertHall.Band;
 
+import SecondHw.ConcertHall.Ticket.Ticket;
+import SecondHw.ConcertHall.Ticket.TicketClass;
+
 public class MusicInstrument {
     private final Instrument instrument;
-    private String type;
+    private static InstrumentType instrumentType;
 
-    public MusicInstrument(Instrument instrument, String type) {
+    public MusicInstrument(Instrument instrument, InstrumentType instrumentType) {
         this.instrument = instrument;
-        this.type = type;
+        this.instrumentType = instrumentType;
     }
 
-    public String getType() {
-        return type;
+    public static InstrumentType getInstrumentType() {
+        return instrumentType;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setInstrumentType(InstrumentType instrumentType) {
+        this.instrumentType = instrumentType;
+    }
+
+    public static void printInstrumentType() {
+        switch (instrumentType) {
+            case ACOUSTIC:
+                System.out.println("Acoustic");
+                break;
+            case ELECTRICAL:
+                System.out.println("Electrical");
+                break;
+            case CLASSICAL:
+                System.out.println("Classical");
+                break;
+            default:
+                System.out.println("This instrumentType is not defined");
+                break;
+        }
     }
 
     @Override
     public String toString() {
-        return instrument + " " + type;
+        return instrument + " " + instrumentType;
     }
 }
